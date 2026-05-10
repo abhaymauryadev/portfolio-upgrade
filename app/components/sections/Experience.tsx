@@ -6,6 +6,7 @@ import { ExperienceModal } from '../ui/ExperienceModal';
 import { JustHireMeExperienceModal } from '../ui/JustHireMeExperienceModal';
 import { FaGithub } from 'react-icons/fa6';
 
+
 const JUSTHIREME_METRICS = [
     { value: '205K', label: 'Launch views' },
     { value: '2K', label: 'Likes' },
@@ -45,7 +46,7 @@ export const Experience = () => {
     const [isJustHireMeModalOpen, setIsJustHireMeModalOpen] = useState(false);
 
     return (
-        <section id="experience" className="inverted bg-bg-primary text-fg-primary py-[16vw] md:py-24 relative">
+        <section id="experience" className="inverted bg-black dark:bg-white dark:text-[#050505] text-[#ffffff]  py-[16vw] md:py-24 relative">
             <Container>
                 <motion.h2
                     initial={{ opacity: 0, x: -20 }}

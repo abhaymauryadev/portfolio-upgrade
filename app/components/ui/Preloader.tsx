@@ -27,16 +27,16 @@ export const Preloader = ({ finishLoading }: PreloaderProps) => {
     }, [finishLoading]);
 
     return (
-        <div className="fixed inset-0 z-100 flex flex-col pointer-events-none">
+        <div className="fixed inset-0 z-100 flex flex-col pointer-events-none ">
             {/* Top Shutter - Slides UP */}
             <motion.div
                 initial={{ y: 0 }}
                 animate={{ y: phase === 'exit' ? "-100%" : 0 }}
                 transition={{ duration: 1.5, ease: [0.87, 0, 0.13, 1] }}
-                className="h-[50vh] w-full bg-fg-primary relative z-20 flex items-end justify-center overflow-hidden border-b border-bg-primary/10"
+                className="h-[50vh] w-full  relative z-20 flex items-end justify-center overflow-hidden border-b border-bg-primary/10 bg-white dark:bg-black  text-[#050505] dark:text-[#ffffff] "
             >
                 {/* Text Container Top */}
-                <div className="overflow-hidden mb-[-0.5vw] md:mb-[-1vw] pb-2 px-4">
+                <div className="overflow-hidden mb-[-0.5vw] md:mb-[-1vw] pb-[3vw] px-4 ">
                     <motion.h1
                         initial={{ y: "100%" }}
                         animate={{
@@ -46,9 +46,9 @@ export const Preloader = ({ finishLoading }: PreloaderProps) => {
                             duration: 1.5,
                             ease: [0.87, 0, 0.13, 1],
                         }}
-                        className="text-[15vw] leading-none font-black tracking-tighter text-bg-primary font-display translate-y-[50%]"
+                        className="text-[15vw] leading-[0.9]  font-black tracking-tighter text-bg-primary font-display translate-y-[10%]"
                     >
-                        VASU
+                        Abhay
                     </motion.h1>
                 </div>
             </motion.div>
@@ -58,7 +58,7 @@ export const Preloader = ({ finishLoading }: PreloaderProps) => {
                 initial={{ y: 0 }}
                 animate={{ y: phase === 'exit' ? "100%" : 0 }}
                 transition={{ duration: 1.5, ease: [0.87, 0, 0.13, 1] }}
-                className="h-[50vh] w-full bg-black relative z-20 flex items-start justify-center overflow-hidden border-t border-white/10"
+                className="h-[50vh] w-full bg-black dark:bg-white dark:text-[#050505] text-[#ffffff] relative z-20 flex items-start justify-center overflow-hidden border-t border-white/10"
             >
                 {/* Text Container Bottom */}
                 <div className="overflow-hidden mt-[-0.5vw] md:mt-[-1vw] pt-2 px-4">
@@ -71,9 +71,9 @@ export const Preloader = ({ finishLoading }: PreloaderProps) => {
                             duration: 1.5,
                             ease: [0.87, 0, 0.13, 1],
                         }}
-                        className="text-[15vw] leading-none font-black tracking-tighter text-white font-display -translate-y-[50%]"
+                        className="text-[15vw] leading-none font-black tracking-tighter text-white font-display translate-y-[-10%]"
                     >
-                        DEVS
+                        Maurya
                     </motion.h1>
                 </div>
             </motion.div>

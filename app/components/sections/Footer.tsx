@@ -326,7 +326,7 @@ export const Footer = ({ theme, onResumeClick }: FooterProps) => {
             duration: 1.2,
             ease: "easeOut",
           }}
-          className="font-display font-black text-[18vw] md:text-[14vw] leading-[0.7] bg-gradient-to-b from-fg-primary to-transparent bg-clip-text text-transparent tracking-tighter uppercase whitespace-nowrap"
+          className="font-display font-black text-[18vw] md:text-[14vw] leading-[0.7] bg-linear-to-b from-fg-primary to-transparent bg-clip-text text-transparent tracking-tighter uppercase whitespace-nowrap"
         >
           ABHAY
         </motion.h1>

@@ -1,5 +1,7 @@
 "use client"
 import { useState, useEffect, lazy, Suspense } from 'react';
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import { Mail } from 'lucide-react';
 import { FaLinkedin, FaXTwitter } from 'react-icons/fa6';
 import { Hero } from './components/sections/Hero';
@@ -13,7 +15,6 @@ import { useLenis } from './hooks/useLenis';
 import type { Project } from './components/sections/Work';
 //  projcts.json
 import { fetchPortfolioGitHubStats } from './lib/github';
-
 
 
 
@@ -594,8 +595,8 @@ export default function Home() {
                resumeUrl={resumeUrl}
             />
          </Suspense>
-         {/* <Analytics /> */}
-         {/* <SpeedInsights /> */}
+         <Analytics />
+         <SpeedInsights />
       </div >
   );
 }
