@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, Linkedin, Twitter, Calendar, ChevronRight } from 'lucide-react';
+import { Mail, Calendar, ChevronRight } from 'lucide-react';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
 interface StatusBadgeProps {
     isInverted?: boolean;
@@ -84,13 +85,13 @@ export const StatusBadge = ({ theme = 'dark' }: StatusBadgeProps) => {
         },
         {
             name: 'LinkedIn',
-            icon: <Linkedin size={14} />,
+            icon: <FaLinkedin size={14} />,
             detail: 'vasu-devs',
             href: 'https://www.linkedin.com/in/vasu-devs/',
         },
         {
             name: 'X (Twitter)',
-            icon: <Twitter size={14} />,
+            icon: <FaGithub size={14} />,
             detail: '@Vasu_DevS',
             href: 'https://twitter.com/Vasu_DevS',
         },

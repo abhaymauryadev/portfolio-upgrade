@@ -1,9 +1,10 @@
 import { useEffect, useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Github, Globe2, X } from 'lucide-react';
+import { Globe2, X } from 'lucide-react';
 import { CopyButton } from './CopyButton';
 import { fetchCachedRepoStats, type GitHubRepoStats } from '../../lib/github';
+import { FaGithub } from 'react-icons/fa6';
 
 interface JustHireMeExperienceModalProps {
     isOpen: boolean;
@@ -191,7 +192,7 @@ export const JustHireMeExperienceModal = ({ isOpen, onClose }: JustHireMeExperie
                                     aria-label="Open JustHireMe on GitHub"
                                     className="p-[2vw] md:p-2 rounded-full border border-transparent hover:border-border-primary hover:bg-bg-secondary transition-colors"
                                 >
-                                    <Github className="w-[5vw] h-[5vw] md:w-5 md:h-5" />
+                                    <FaGithub className="w-[5vw] h-[5vw] md:w-5 md:h-5" />
                                 </a>
                                 <a
                                     href="https://justhireme.ai"

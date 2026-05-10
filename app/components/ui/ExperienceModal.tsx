@@ -1,7 +1,9 @@
+"use client";
+
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import { CopyButton } from './CopyButton';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 interface ExperienceModalProps {
@@ -52,10 +54,10 @@ const SECTIONS: Section[] = [
         title: 'Architecture',
         bullets: [
             'Tri-format currency storage — every monetary amount persisted in native + base + pre-computed alternate currency, using decimal.js arbitrary-precision math end-to-end. No floating-point money bugs.',
-            'Three-phase sync pipeline (fetch → enrich → attribute) with signed continuation tokens that survive Vercel\u2019s 300-second serverless cap and stale-lock auto-recovery.',
+            'Three-phase sync pipeline (fetch → enrich → attribute) with signed continuation tokens that survive Vercel’s 300-second serverless cap and stale-lock auto-recovery.',
             'Pre-aggregated DailyPnlRollup table behind two PostgreSQL RPC functions, so the dashboard resolves set-based aggregations in-database instead of pulling raw rows to the app.',
             '40+ strategic indexes across 14 tables — including composite indexes tuned specifically to P&L filter shapes.',
-            'Chunked per-connector sync sized to each API\u2019s real constraints (e.g. PayPal\u2019s hard 31-day window), with resumable continuation via syncLogId + syncSecret.',
+            'Chunked per-connector sync sized to each API’s real constraints (e.g. PayPal’s hard 31-day window), with resumable continuation via syncLogId + syncSecret.',
         ],
     },
     {
@@ -91,13 +93,21 @@ const TECH_STACK = [
 ];
 
 export const ExperienceModal = ({ isOpen, onClose }: ExperienceModalProps) => {
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
     useEffect(() => {
         if (!isOpen) return;
 
         document.body.style.overflow = 'hidden';
+
         const onKey = (e: KeyboardEvent) => {
             if (e.key === 'Escape') onClose();
         };
+
         window.addEventListener('keydown', onKey);
 
         return () => {
@@ -105,6 +115,8 @@ export const ExperienceModal = ({ isOpen, onClose }: ExperienceModalProps) => {
             window.removeEventListener('keydown', onKey);
         };
     }, [isOpen, onClose]);
+
+    if (!mounted) return null;
 
     return createPortal(
         <AnimatePresence>
@@ -125,18 +137,24 @@ export const ExperienceModal = ({ isOpen, onClose }: ExperienceModalProps) => {
                         transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                         className="relative w-full max-w-[1100px] bg-bg-primary border border-border-primary rounded-2xl shadow-2xl flex flex-col max-h-[92vh] overflow-hidden"
                     >
-                        {/* Sticky header */}
+                        {/* Header */}
                         <div className="flex justify-between items-start gap-4 px-[6vw] md:px-10 py-[5vw] md:py-6 border-b border-border-primary bg-bg-primary/80 backdrop-blur-md z-10">
                             <div className="min-w-0">
                                 <span className="font-mono text-[2.5vw] md:text-xs uppercase tracking-widest text-fg-secondary block mb-[1vw] md:mb-2">
                                     Case study · Freelance
                                 </span>
+
                                 <h2 className="font-display font-black text-[6vw] md:text-3xl lg:text-4xl leading-tight tracking-tight truncate">
                                     Internal Finance &amp; P&amp;L Platform
                                 </h2>
                             </div>
+
                             <div className="flex items-center gap-3 shrink-0">
-                                <CopyButton contentId="experience-modal-content" className="flex" />
+                                <CopyButton
+                                    contentId="experience-modal-content"
+                                    className="flex"
+                                />
+
                                 <button
                                     onClick={onClose}
                                     aria-label="Close case study"
@@ -147,35 +165,39 @@ export const ExperienceModal = ({ isOpen, onClose }: ExperienceModalProps) => {
                             </div>
                         </div>
 
-                        {/* Scrollable content */}
+                        {/* Content */}
                         <div
                             id="experience-modal-content"
                             className="overflow-y-auto flex-1 overscroll-contain"
                             data-lenis-prevent
                         >
                             <div className="px-[6vw] md:px-10 py-[8vw] md:py-12">
-                                {/* Hero block */}
+
+                                {/* Hero */}
                                 <div className="mb-[10vw] md:mb-14 max-w-3xl">
                                     <div className="flex flex-wrap gap-[2vw] md:gap-2 mb-[4vw] md:mb-6">
                                         <span className="px-[3vw] md:px-3 py-[1vw] md:py-1 rounded-full border border-border-primary text-[2.5vw] md:text-xs font-mono uppercase tracking-widest text-fg-secondary">
                                             Mar 2026 → Apr 2026
                                         </span>
+
                                         <span className="px-[3vw] md:px-3 py-[1vw] md:py-1 rounded-full border border-border-primary text-[2.5vw] md:text-xs font-mono uppercase tracking-widest text-fg-secondary">
                                             Sole engineer
                                         </span>
+
                                         <span className="px-[3vw] md:px-3 py-[1vw] md:py-1 rounded-full border border-border-primary text-[2.5vw] md:text-xs font-mono uppercase tracking-widest text-fg-secondary">
                                             Next.js · PostgreSQL
                                         </span>
                                     </div>
+
                                     <p className="text-[4vw] md:text-xl text-fg-secondary leading-relaxed">
                                         End-to-end build of a production-grade financial reporting platform:
-                                        unified transaction ingestion across five live platforms, accurate
-                                        multi-currency P&amp;L with full processor-level deduplication, and a
-                                        live dashboard that loads in sub-second.
+                                        unified transaction ingestion across five live platforms,
+                                        accurate multi-currency P&amp;L with full processor-level
+                                        deduplication, and a live dashboard that loads in sub-second.
                                     </p>
                                 </div>
 
-                                {/* Metric strip */}
+                                {/* Metrics */}
                                 <div className="grid grid-cols-2 md:grid-cols-4 gap-[3vw] md:gap-4 mb-[12vw] md:mb-16">
                                     {HEADLINE_METRICS.map((m) => (
                                         <div
@@ -185,6 +207,7 @@ export const ExperienceModal = ({ isOpen, onClose }: ExperienceModalProps) => {
                                             <div className="font-display font-black text-[8vw] md:text-4xl leading-none mb-[1vw] md:mb-2">
                                                 {m.value}
                                             </div>
+
                                             <div className="font-mono text-[2.5vw] md:text-xs uppercase tracking-widest text-fg-secondary">
                                                 {m.label}
                                             </div>
@@ -200,7 +223,9 @@ export const ExperienceModal = ({ isOpen, onClose }: ExperienceModalProps) => {
                                                 <span className="font-mono text-[2.5vw] md:text-xs text-fg-secondary tabular-nums">
                                                     {String(i + 1).padStart(2, '0')}
                                                 </span>
+
                                                 <div className="h-px flex-1 bg-border-primary" />
+
                                                 <h3 className="font-display font-bold text-[5.5vw] md:text-2xl uppercase tracking-tight">
                                                     {section.title}
                                                 </h3>
@@ -235,6 +260,7 @@ export const ExperienceModal = ({ isOpen, onClose }: ExperienceModalProps) => {
                                                             <div className="font-display font-black text-[7vw] md:text-3xl leading-none shrink-0 min-w-[20vw] md:min-w-[90px]">
                                                                 {w.metric}
                                                             </div>
+
                                                             <p className="text-[3.2vw] md:text-sm leading-relaxed text-fg-secondary">
                                                                 {w.desc}
                                                             </p>
@@ -246,11 +272,12 @@ export const ExperienceModal = ({ isOpen, onClose }: ExperienceModalProps) => {
                                     ))}
                                 </div>
 
-                                {/* Tech stack footer */}
+                                {/* Stack */}
                                 <div className="mt-[14vw] md:mt-20 pt-[6vw] md:pt-8 border-t border-border-primary">
                                     <span className="font-mono text-[2.5vw] md:text-xs uppercase tracking-widest text-fg-secondary block mb-[3vw] md:mb-4">
                                         Stack
                                     </span>
+
                                     <div className="flex flex-wrap gap-[2vw] md:gap-2">
                                         {TECH_STACK.map((t) => (
                                             <span
@@ -262,6 +289,7 @@ export const ExperienceModal = ({ isOpen, onClose }: ExperienceModalProps) => {
                                         ))}
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </motion.div>

@@ -27,7 +27,7 @@ export const Preloader = ({ finishLoading }: PreloaderProps) => {
     }, [finishLoading]);
 
     return (
-        <div className="fixed inset-0 z-[100] flex flex-col pointer-events-none">
+        <div className="fixed inset-0 z-100 flex flex-col pointer-events-none">
             {/* Top Shutter - Slides UP */}
             <motion.div
                 initial={{ y: 0 }}
