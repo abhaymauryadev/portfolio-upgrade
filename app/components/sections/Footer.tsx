@@ -1,3 +1,4 @@
+"use client"
 import { motion } from "framer-motion";
 import { GitHubCalendar } from "react-github-calendar";
 import { Mail, FileText } from "lucide-react";

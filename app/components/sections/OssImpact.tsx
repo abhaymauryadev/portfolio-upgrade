@@ -1,5 +1,4 @@
-'use client';
-
+"use client"
 import { motion } from 'framer-motion';
 import {
     GitPullRequest,
@@ -13,6 +12,7 @@ import {
 } from 'lucide-react';
 import { Container } from '../ui/Container';
 import { useEffect, useState, useRef } from 'react';
+import ossData from '../../data/oss-contributions.json';
 
 interface OssImpactProps {
     stats: {
@@ -69,7 +69,8 @@ const AnimatedCounter = ({
 }) => {
     const [displayValue, setDisplayValue] = useState(0);
     const previousValue = useRef(0);
-    const animationRef = useRef<number>();
+
+   const animationRef = useRef<number | null>(null);
 
     useEffect(() => {
         const startValue = previousValue.current;
@@ -116,7 +117,8 @@ const StatSkeleton = () => (
 );
 
 export const OssImpact = ({ stats, isLoading = false }: OssImpactProps) => {
-    const totalPrs = stats.prs ?? 0;
+    const totalPrs = ossData.totalPrs ?? 0;
+    const repoCount = ossData.byRepo ? Object.keys(ossData.byRepo).length : 0;
 
     return (
         <section
@@ -148,7 +150,7 @@ export const OssImpact = ({ stats, isLoading = false }: OssImpactProps) => {
                     transition={{ delay: 0.1 }}
                     className="text-[3vw] md:text-sm font-mono uppercase tracking-widest text-bg-primary/60 text-center mb-[12vw] md:mb-16"
                 >
-                    {totalPrs} merged PRs
+                    {totalPrs} merged PRs across {repoCount} external repositories
                 </motion.p>
 
                 {/* Top tier: 3 headline contributions */}

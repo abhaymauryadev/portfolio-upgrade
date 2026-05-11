@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -106,6 +108,11 @@ const TECH_STACK = [
 
 export const JustHireMeExperienceModal = ({ isOpen, onClose }: JustHireMeExperienceModalProps) => {
     const [repoStats, setRepoStats] = useState<GitHubRepoStats>(FALLBACK_REPO_STATS);
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     useEffect(() => {
         if (!isOpen) return;
@@ -155,6 +162,8 @@ export const JustHireMeExperienceModal = ({ isOpen, onClose }: JustHireMeExperie
         ],
         [repoStats]
     );
+
+    if (!mounted) return null;
 
     return createPortal(
         <AnimatePresence>

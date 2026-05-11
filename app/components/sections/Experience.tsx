@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowUpRight, Globe2 } from 'lucide-react';
@@ -227,7 +229,7 @@ export const Experience = () => {
                             {TECH_CHIPS.map((t) => (
                                 <span
                                     key={t}
-                                    className="px-[3vw] md:px-3 py-[1vw] md:py-1 rounded-full border border-border-primary text-[2.5vw] md:text-xs font-mono bg-fg-primary/[0.03] text-fg-secondary"
+                                    className="px-[3vw] md:px-3 py-[1vw] md:py-1 rounded-full border border-border-primary text-[2.5vw] md:text-xs font-mono bg-fg-primary/3 text-fg-secondary"
                                 >
                                     {t}
                                 </span>
