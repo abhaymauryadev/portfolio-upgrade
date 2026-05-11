@@ -16,7 +16,7 @@ export const SideBranding = () => {
                     bottom: 'calc(56% + 24px)',
                 }}
             >
-                VASU-DEVS
+                ABHAY-MAURYA
             </div>
 
             {/* Decorative line — entirely in lower half, anchored just below the 44% split */}
