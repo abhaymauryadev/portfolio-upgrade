@@ -46,7 +46,7 @@ export const Experience = () => {
     const [isJustHireMeModalOpen, setIsJustHireMeModalOpen] = useState(false);
 
     return (
-        <section id="experience" className="inverted bg-black dark:bg-white dark:text-[#050505] text-[#ffffff]  py-[16vw] md:py-24 relative">
+        <section id="experience" className="inverted bg-bg-primary text-fg-primary py-[16vw] md:py-24 relative">
             <Container>
                 <motion.h2
                     initial={{ opacity: 0, x: -20 }}
