@@ -1,9 +1,10 @@
 import { MagneticButton } from './MagneticButton';
 import { LucideIcon } from 'lucide-react';
+import { IconType } from 'react-icons';
 
 interface SocialButtonProps {
     href: string;
-    icon: LucideIcon;
+    icon: LucideIcon | IconType;
     label: string;
 }
 

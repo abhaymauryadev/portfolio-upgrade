@@ -197,7 +197,7 @@ export const Hero = ({
 
                                 <SocialButton
                                     href="https://linkedin.com/in/YOUR_LINKEDIN"
-                                    icon={""}
+                                    icon={FaLinkedin}
                                     label="LinkedIn Profile"
                                 />
 
