@@ -1,8 +1,5 @@
 import { motion } from 'framer-motion';
-import {
-    Mail,
-    FileText,
-} from 'lucide-react';
+import { Mail,FileText} from 'lucide-react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
 import { Container } from '../ui/Container';
@@ -15,10 +12,12 @@ interface HeroProps {
     onResumeClick?: () => void;
 }
 
+
 export const Hero = ({
     theme = 'dark',
     onResumeClick,
 }: HeroProps) => {
+
     return (
         <section
             id="hero"
@@ -198,7 +197,7 @@ export const Hero = ({
 
                                 <SocialButton
                                     href="https://linkedin.com/in/YOUR_LINKEDIN"
-                                    icon={FaLinkedin}
+                                    icon={""}
                                     label="LinkedIn Profile"
                                 />
 

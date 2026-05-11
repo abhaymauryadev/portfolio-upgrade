@@ -183,8 +183,8 @@ export const Footer = ({ theme, onResumeClick }: FooterProps) => {
                       blockSize={12}
                       blockMargin={4}
                       fontSize={12}
-                      hideColorLegend
-                      hideTotalCount
+                      showColorLegend={false}
+                      showTotalCount={false}
                     />
                   </div>
                 </div>
