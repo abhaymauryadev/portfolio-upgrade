@@ -23,7 +23,7 @@ export const Footer = ({ theme, onResumeClick }: FooterProps) => {
   const [contributionCount, setContributionCount] = useState(0);
 
   // Replace with your GitHub username
-  const githubUsername = "YOUR_GITHUB_USERNAME";
+  const githubUsername = "abhaymauryadev";
 
   // Fetch GitHub contribution count
   useEffect(() => {
