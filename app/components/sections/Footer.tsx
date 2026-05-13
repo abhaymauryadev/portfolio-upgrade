@@ -250,13 +250,13 @@ export const Footer = ({ theme, onResumeClick }: FooterProps) => {
           >
             {[
               {
-                href: "mailto:yourmail@gmail.com",
+                href: "mailto:theabhaymauryadev@gmail.com",
                 icon: <Mail className="w-[4.5vw] h-[4.5vw] md:w-5 md:h-5" />,
                 label: "Email",
               },
 
               {
-                href: "https://github.com/YOUR_GITHUB_USERNAME",
+                href: "https://github.com/abhaymauryadev/",
                 icon: (
                   <FaGithub className="w-[4.5vw] h-[4.5vw] md:w-5 md:h-5" />
                 ),
@@ -264,7 +264,7 @@ export const Footer = ({ theme, onResumeClick }: FooterProps) => {
               },
 
               {
-                href: "https://linkedin.com/in/YOUR_LINKEDIN",
+                href: "https://www.linkedin.com/in/abhaymauryadev/",
                 icon: (
                   <FaLinkedin className="w-[4.5vw] h-[4.5vw] md:w-5 md:h-5" />
                 ),
@@ -298,7 +298,7 @@ export const Footer = ({ theme, onResumeClick }: FooterProps) => {
 
         <div className="flex gap-[6vw] md:gap-4">
           <a
-            href="https://github.com/YOUR_GITHUB_USERNAME"
+            href="https://github.com/abhaymauryadev"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-fg-primary transition-colors"
@@ -307,7 +307,7 @@ export const Footer = ({ theme, onResumeClick }: FooterProps) => {
           </a>
 
           <a
-            href="https://linkedin.com/in/YOUR_LINKEDIN"
+            href="https://www.linkedin.com/in/abhaymauryadev/"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-fg-primary transition-colors"

@@ -177,7 +177,7 @@ export const StatusBadge = ({ theme = 'dark' }: StatusBadgeProps) => {
                                             </div>
                                         </div>
                                         <div className={`p-[3vw] md:p-[0.75vw]  rounded-xl transition-all duration-500 group-hover:scale-110 ${isOverLightBg ? 'bg-black/5 text-black group-hover:bg-black group-hover:text-white' : 'bg-white/5 text-white group-hover:bg-white group-hover:text-black'}`}>
-                                            <span className="block w-[3.5vw] h-[3.5vw] md:w-[1vw] md:h-[1vw] flex justify-center items-center ">{link.icon}</span>
+                                            <span className=" w-[3.5vw] h-[3.5vw] md:w-[1vw] md:h-[1vw] flex justify-center items-center ">{link.icon}</span>
                                         </div>
                                     </motion.a>
                                 ))}

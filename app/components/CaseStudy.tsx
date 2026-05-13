@@ -79,14 +79,14 @@ export const CaseStudy = ({
                 </div>
                 <p className="font-mono text-[2.8vw] md:text-sm text-fg-secondary mt-[4vw] md:mt-5">
                     Want to see the code or discuss?{' '}
-                    <a href="mailto:siddhvasudev1402@gmail.com" className="text-fg-primary underline underline-offset-2 hover:opacity-70 transition-opacity">
+                    <a href="mailto:theabhaymauryadev@gmail.com" className="text-fg-primary underline underline-offset-2 hover:opacity-70 transition-opacity">
                         Drop me a mail
                     </a>
                 </p>
             </div>
 
             {/* Visual Side */}
-            <div className="flex-1 w-full aspect-[4/3] bg-bg-secondary relative overflow-hidden rounded-xl border border-border-primary group cursor-pointer">
+            <div className="flex-1 w-full aspect-4/3 bg-bg-secondary relative overflow-hidden rounded-xl border border-border-primary group cursor-pointer">
                 <div className="absolute inset-0 w-full h-full">
                     {thumbnailUrl ? (
                         <img
@@ -96,12 +96,12 @@ export const CaseStudy = ({
                             className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
                         />
                     ) : (
-                        <div className="w-full h-full bg-gradient-to-br from-bg-secondary to-border-primary opacity-50" />
+                        <div className="w-full h-full bg-linear-to-br from-bg-secondary to-border-primary opacity-50" />
                     )}
                 </div>
 
                 {/* Overlay Gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-linear-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                 {/* Play Button Indicator */}
                 <div className="absolute inset-0 flex items-center justify-center">
