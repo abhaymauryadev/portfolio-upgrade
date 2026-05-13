@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Users, Eye, Activity, Bot } from 'lucide-react';
+import { TbPacman } from "react-icons/tb";
 
 interface ViewerBadgeProps {
     theme?: 'light' | 'dark';
@@ -209,7 +210,7 @@ export const ViewerBadge = ({ theme = 'dark' }: ViewerBadgeProps) => {
                         animate={isRefreshing ? { scale: [1, 1.2, 1], rotate: [0, 10, -10, 0] } : {}}
                         transition={{ duration: 0.5, repeat: isRefreshing ? Infinity : 0 }}
                     >
-                        <Bot className={`w-[3.5vw] h-[3.5vw] md:w-[14px] md:h-[14px] ${isOverLightBg ? 'text-black' : 'text-white'}`} />
+                        <Bot className={`w-[3.5vw] h-[3.5vw] md:w-3.5 md:h-3.5 ${isOverLightBg ? 'text-black' : 'text-white'}`} />
                     </motion.div>
                 </div>
                 <span className={`text-[2.2vw] md:text-xs uppercase tracking-[0.15em] font-black leading-tight translate-y-[0.5px]

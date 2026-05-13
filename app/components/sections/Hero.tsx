@@ -191,19 +191,19 @@ export const Hero = ({
                             <div className="flex flex-wrap items-center gap-3 md:gap-4 relative z-50">
 
                                 <SocialButton
-                                    href="https://github.com/YOUR_GITHUB_USERNAME"
+                                    href="https://github.com/abhaymauryadev"
                                     icon={FaGithub}
                                     label="GitHub Profile"
                                 />
 
                                 <SocialButton
-                                    href="https://linkedin.com/in/YOUR_LINKEDIN"
+                                    href="https://www.linkedin.com/in/abhaymauryadev"
                                     icon={FaLinkedin}
                                     label="LinkedIn Profile"
                                 />
 
                                 <SocialButton
-                                    href="mailto:yourmail@gmail.com"
+                                    href="mailto:theabhaywebdev@gmail.com"
                                     icon={Mail}
                                     label="Email Me"
                                 />
@@ -251,7 +251,7 @@ export const Hero = ({
 
                             {/* Hero Image */}
                             <motion.img
-                                src="/Pic/Hero.webp"
+                                src="/pic/self.png"
                                 alt="Abhay Maurya"
                                 loading="eager"
                                 fetchPriority="high"

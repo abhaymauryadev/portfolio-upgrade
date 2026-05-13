@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, Calendar, ChevronRight } from 'lucide-react';
+import { Mail,  ChevronRight } from 'lucide-react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
 interface StatusBadgeProps {
@@ -80,27 +80,27 @@ export const StatusBadge = ({ theme = 'dark' }: StatusBadgeProps) => {
         {
             name: 'Gmail',
             icon: <Mail size={14} />,
-            detail: 'siddhvasudev1402@gmail.com',
-            href: 'mailto:siddhvasudev1402@gmail.com',
+            detail: 'theabhaymauryadev@gmail.com',
+            href: 'mailto:theabhaymauryadev@gmail.com',
         },
         {
             name: 'LinkedIn',
             icon: <FaLinkedin size={14} />,
-            detail: 'vasu-devs',
-            href: 'https://www.linkedin.com/in/vasu-devs/',
+            detail: 'abhay-maurya',
+            href: 'https://www.linkedin.com/in/abhaymauryadev/',
         },
         {
             name: 'X (Twitter)',
             icon: <FaGithub size={14} />,
-            detail: '@Vasu_DevS',
-            href: 'https://twitter.com/Vasu_DevS',
+            detail: '@theabhaywebdev',
+            href: 'https://x.com/theabhaywebdev',
         },
-        {
-            name: 'Cal.com',
-            icon: <Calendar size={14} />,
-            detail: 'Book a session',
-            href: 'https://cal.com/vasu-devs',
-        }
+        // {
+        //     name: 'Cal.com',
+        //     icon: <Calendar size={14} />,
+        //     detail: 'Book a session',
+        //     href: 'https://cal.com/vasu-devs',
+        // }
     ];
 
     return (
@@ -176,8 +176,8 @@ export const StatusBadge = ({ theme = 'dark' }: StatusBadgeProps) => {
                                                 </span>
                                             </div>
                                         </div>
-                                        <div className={`p-[3vw] md:p-[0.75vw] rounded-xl transition-all duration-500 group-hover:scale-110 ${isOverLightBg ? 'bg-black/5 text-black group-hover:bg-black group-hover:text-white' : 'bg-white/5 text-white group-hover:bg-white group-hover:text-black'}`}>
-                                            <span className="block w-[3.5vw] h-[3.5vw] md:w-[1vw] md:h-[1vw]">{link.icon}</span>
+                                        <div className={`p-[3vw] md:p-[0.75vw]  rounded-xl transition-all duration-500 group-hover:scale-110 ${isOverLightBg ? 'bg-black/5 text-black group-hover:bg-black group-hover:text-white' : 'bg-white/5 text-white group-hover:bg-white group-hover:text-black'}`}>
+                                            <span className="block w-[3.5vw] h-[3.5vw] md:w-[1vw] md:h-[1vw] flex justify-center items-center ">{link.icon}</span>
                                         </div>
                                     </motion.a>
                                 ))}
