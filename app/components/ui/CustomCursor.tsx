@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef, useCallback } from 'react';
 import { motion, useSpring, useMotionValue, AnimatePresence } from 'framer-motion';
 import { Bot, Pointer } from 'lucide-react';
+import { TbPacman } from "react-icons/tb";
 
 interface CustomCursorProps {
     theme: 'light' | 'dark';
@@ -459,7 +460,7 @@ export function CustomCursor({ theme }: CustomCursorProps) {
                 <AnimatePresence>
                     {eaterVisible && (
                         <motion.div
-                            className="fixed pointer-events-none z-[9995] text-white mix-blend-difference"
+                            className="fixed pointer-events-none z-9995 text-white mix-blend-difference"
                             initial={{ opacity: 0, scale: 0 }}
                             animate={{
                                 opacity: 1,
@@ -472,7 +473,7 @@ export function CustomCursor({ theme }: CustomCursorProps) {
                             transition={{ duration: moveDuration }}
                             style={{ transform: 'translate(-50%, -50%)', marginLeft: '-12px', marginTop: '-12px' }}
                         >
-                            <Bot size={24} strokeWidth={2.5} />
+                            <TbPacman size={24} strokeWidth={2.5} />
                         </motion.div>
                     )}
                 </AnimatePresence>
@@ -530,7 +531,7 @@ export function CustomCursor({ theme }: CustomCursorProps) {
             <AnimatePresence>
                 {eaterVisible && (
                     <motion.div
-                        className="fixed pointer-events-none z-[9995] text-white mix-blend-difference"
+                        className="fixed pointer-events-none z-9995 text-white mix-blend-difference"
                         initial={{ opacity: 0, scale: 0 }}
                         animate={{
                             opacity: 1,
@@ -543,7 +544,7 @@ export function CustomCursor({ theme }: CustomCursorProps) {
                         transition={{ duration: moveDuration }}
                         style={{ transform: 'translate(-50%, -50%)', marginLeft: '-12px', marginTop: '-12px' }}
                     >
-                        <Bot size={24} strokeWidth={2.5} />
+                        <TbPacman size={24} strokeWidth={2.5} />
                     </motion.div>
                 )}
             </AnimatePresence>

@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Users, Eye, Activity, Bot } from 'lucide-react';
-import { TbPacman } from "react-icons/tb";
+
 
 interface ViewerBadgeProps {
     theme?: 'light' | 'dark';

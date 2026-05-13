@@ -1,9 +1,10 @@
 "use client"
 import { motion } from "framer-motion";
 import { GitHubCalendar } from "react-github-calendar";
-import { Mail, FileText } from "lucide-react";
+import { Mail } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { useEffect, useRef, useState } from "react";
+import { cloneElement, useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 
 import { Container } from "../ui/Container";
 import { MagneticButton } from "../ui/MagneticButton";
@@ -21,8 +22,13 @@ export const Footer = ({ theme, onResumeClick }: FooterProps) => {
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
   const [contributionCount, setContributionCount] = useState(0);
+  const [tooltip, setTooltip] = useState<{
+    visible: boolean;
+    content: string;
+    x: number;
+    y: number;
+  }>({ visible: false, content: "", x: 0, y: 0 });
 
-  // Replace with your GitHub username
   const githubUsername = "abhaymauryadev";
 
   // Fetch GitHub contribution count
@@ -186,6 +192,36 @@ export const Footer = ({ theme, onResumeClick }: FooterProps) => {
                       fontSize={12}
                       showColorLegend={false}
                       showTotalCount={false}
+                      showWeekdayLabels={true}
+                      renderBlock={(block, activity) =>
+                        cloneElement(block, {
+                          onMouseEnter: (e: React.MouseEvent<SVGRectElement>) => {
+                            const rect = e.currentTarget.getBoundingClientRect();
+                            const date = new Date(activity.date);
+                            const label =
+                              activity.count === 0
+                                ? `No contributions on ${date.toLocaleDateString("en-US", {
+                                    month: "long",
+                                    day: "numeric",
+                                    year: "numeric",
+                                  })}`
+                                : `${activity.count} contribution${activity.count !== 1 ? "s" : ""} on ${date.toLocaleDateString("en-US", {
+                                    month: "long",
+                                    day: "numeric",
+                                    year: "numeric",
+                                  })}`;
+
+                            setTooltip({
+                              visible: true,
+                              content: label,
+                              x: rect.left + rect.width / 2,
+                              y: rect.top - 10,
+                            });
+                          },
+                          onMouseLeave: () =>
+                            setTooltip((prev) => ({ ...prev, visible: false })),
+                        })
+                      }
                     />
                   </div>
                 </div>
@@ -316,6 +352,35 @@ export const Footer = ({ theme, onResumeClick }: FooterProps) => {
           </a>
         </div>
       </Container>
+
+      {/* Hover Tooltip */}
+      {tooltip.visible &&
+        createPortal(
+          <div
+            className="fixed z-9999 pointer-events-none"
+            style={{ left: tooltip.x, top: tooltip.y, transform: "translate(-50%, -100%)" }}
+          >
+            <div
+              className={`
+                px-3 py-1.5 rounded-md text-xs font-mono whitespace-nowrap shadow-lg
+                ${theme === "dark"
+                  ? "bg-[#161b22] text-white border border-[#30363d]"
+                  : "bg-[#1b1f23] text-white border border-[#444d56]"}
+              `}
+            >
+              {tooltip.content}
+              <div
+                className="absolute left-1/2 -translate-x-1/2 top-full w-0 h-0"
+                style={{
+                  borderLeft: "5px solid transparent",
+                  borderRight: "5px solid transparent",
+                  borderTop: `5px solid ${theme === "dark" ? "#30363d" : "#444d56"}`,
+                }}
+              />
+            </div>
+          </div>,
+          document.body
+        )}
 
       {/* Watermark */}
       <div className="w-full flex justify-center items-end mt-[10vw] md:mt-4 overflow-hidden pointer-events-none select-none">
