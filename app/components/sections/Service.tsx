@@ -99,7 +99,7 @@ export const Services = () => {
 
                             {/* CTA */}
                             <a
-                                href="https://cal.com/vasu-devs"
+                                href="#"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="self-start font-mono text-[2.8vw] md:text-sm uppercase tracking-widest font-bold opacity-80 hover:opacity-100 transition-opacity"
@@ -111,7 +111,7 @@ export const Services = () => {
                 </div>
 
                 {/* Bottom strip */}
-                <motion.div
+                {/* <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -130,7 +130,7 @@ export const Services = () => {
                     >
                         Book a free call
                     </a>
-                </motion.div>
+                </motion.div> */}
             </Container>
         </section>
     );

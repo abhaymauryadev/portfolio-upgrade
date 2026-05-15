@@ -540,10 +540,10 @@ export default function Home() {
                      <a href="mailto:siddhvasudev1402@gmail.com" className="opacity-70 hover:opacity-100 transition-opacity">
                         <Mail className="w-4 h-4 md:w-5 md:h-5" />
                      </a>
-                     <a href="https://www.linkedin.com/in/vasu-devs/" target="_blank" rel="noopener noreferrer" className="opacity-70 hover:opacity-100 transition-opacity">
+                     <a href="https://www.linkedin.com/in/abhaymauryadev/" target="_blank" rel="noopener noreferrer" className="opacity-70 hover:opacity-100 transition-opacity">
                         <FaLinkedin className="w-4 h-4 md:w-5 md:h-5" />
                      </a>
-                     <a href="https://twitter.com/Vasu_DevS" target="_blank" rel="noopener noreferrer" className="opacity-70 hover:opacity-100 transition-opacity">
+                     <a href="https://twitter.com/theabhaywebdev" target="_blank" rel="noopener noreferrer" className="opacity-70 hover:opacity-100 transition-opacity">
                         <FaXTwitter className="w-4 h-4 md:w-5 md:h-5" />
                      </a>
                   </div>

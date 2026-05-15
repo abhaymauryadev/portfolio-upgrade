@@ -192,7 +192,7 @@ export const ViewerBadge = ({ theme = 'dark' }: ViewerBadgeProps) => {
     return (
         <div 
             ref={containerRef}
-            className="fixed top-[4vw] left-[4vw] md:top-[2vw] md:left-[2.5vw] z-[70] font-mono select-none"
+            className="fixed top-[4vw] left-[4vw] md:top-[2vw] md:left-[2.5vw] z-70 font-mono select-none"
         >
             {/* Main Trigger Pill */}
             <motion.button
@@ -227,7 +227,7 @@ export const ViewerBadge = ({ theme = 'dark' }: ViewerBadgeProps) => {
                         animate={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
                         exit={{ opacity: 0, y: 10, scale: 0.95, filter: 'blur(10px)' }}
                         transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                        className={`absolute top-full left-0 mt-[4vw] md:mt-[1vw] w-[70vw] md:w-[22vw] max-w-[calc(100vw-2rem)] backdrop-blur-xl border rounded-[2rem] shadow-lg overflow-hidden z-[71]
+                        className={`absolute top-full left-0 mt-[4vw] md:mt-[1vw] w-[70vw] md:w-[22vw] max-w-[calc(100vw-2rem)] backdrop-blur-xl border rounded-4xl shadow-lg overflow-hidden z-71
                             ${isOverLightBg
                                 ? 'bg-white/70 text-black border-black/10'
                                 : 'bg-black/70 text-white border-white/10'}
@@ -242,13 +242,13 @@ export const ViewerBadge = ({ theme = 'dark' }: ViewerBadgeProps) => {
                                         {hasError ? 'LIVE_DATA_UNAVAILABLE' : isRefreshing ? 'REFRESHING_DATA...' : 'UPSTASH_REDIS_LIVE'}
                                     </span>
                                 </div>
-                                <div className={`p-[2vw] md:p-[0.5vw] rounded-full border ${isOverLightBg ? 'border-emerald-500/20 bg-emerald-500/10' : 'border-emerald-500/30 bg-emerald-500/10'}`}>
+                                <div className={`p-[2vw] md:p-[0.5vw]  rounded-full border ${isOverLightBg ? 'border-emerald-500/20 bg-emerald-500/10' : 'border-emerald-500/30 bg-emerald-500/10'}`}>
                                     <div className={`w-[1.5vw] h-[1.5vw] md:w-[0.4vw] md:h-[0.4vw] rounded-full bg-emerald-500 ${isRefreshing ? 'animate-ping' : 'animate-pulse'}`} />
                                 </div>
                             </div>
 
                             {/* Stats Rows */}
-                            <div className="flex flex-col gap-[2vw] md:gap-[0.5vw]">
+                            <div className="flex flex-col  gap-[2vw] md:gap-[0.5vw]">
                                 {[
                                     { name: 'Live Users', value: hasError ? '---' : <><RollingNumber value={displayStats.activeNow} /> ACTIVE</>, icon: <Activity size={14} />, color: hasError ? 'text-red-500' : 'text-emerald-500' },
                                     { name: 'Unique Visitors', value: hasError ? '---' : <RollingNumber value={displayStats.uniqueVisitors} />, icon: <Users size={14} /> },
@@ -266,11 +266,11 @@ export const ViewerBadge = ({ theme = 'dark' }: ViewerBadgeProps) => {
                                             <div className={`p-[2vw] md:p-[0.75vw] rounded-xl ${isOverLightBg ? 'bg-black/5 text-black' : 'bg-white/5 text-white'}`}>
                                                 {stat.icon}
                                             </div>
-                                            <div className="flex flex-col">
+                                            <div className="flex flex-col ">
                                                 <span className={`text-[2.25vw] md:text-[0.7vw] uppercase tracking-wider font-bold opacity-40 ${isOverLightBg ? 'text-black' : 'text-white'}`}>
                                                     {stat.name}
                                                 </span>
-                                                <span className={`text-[2.5vw] md:text-[0.9vw] font-black ${stat.color || ''} ${isOverLightBg ? 'text-black' : 'text-white'}`}>
+                                                <span className={`text-[2.5vw] md:text-[0.9vw]  flex justify-start items-end border font-black ${stat.color || ''} ${isOverLightBg ? 'text-black' : 'text-white'}`}>
                                                     {stat.value}
                                                 </span>
                                             </div>

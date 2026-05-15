@@ -432,7 +432,7 @@ export function CustomCursor({ theme }: CustomCursorProps) {
         return (
             <>
                 {/* Paint dots canvas - works on mobile */}
-                <div className="fixed inset-0 pointer-events-none z-[9990] mix-blend-difference">
+                <div className="fixed inset-0 pointer-events-none z-9990 mix-blend-difference">
                     <AnimatePresence>
                         {paintDots.map((dot) => (
                             <motion.div
@@ -497,13 +497,49 @@ export function CustomCursor({ theme }: CustomCursorProps) {
         );
     }
 
+    //  Animated Pacman
+    const AnimatedPacman = () => {
+    const [mouthAngle, setMouthAngle] = useState(40);
+
+    useEffect(() => {
+        let open = true;
+        const interval = setInterval(() => {
+            open = !open;
+            setMouthAngle(open ? 40 : 4);
+        }, 160);
+        return () => clearInterval(interval);
+    }, []);
+
+    const r = 11;
+    const cx = 12;
+    const cy = 12;
+    const rad = (mouthAngle * Math.PI) / 180;
+
+    const x1 = cx + r * Math.cos(-rad);
+    const y1 = cy + r * Math.sin(-rad);
+    const x2 = cx + r * Math.cos(rad);
+    const y2 = cy + r * Math.sin(rad);
+
+    // Same path structure each render = CSS `d` transition works
+    const d = `M ${cx} ${cy} L ${x1.toFixed(3)} ${y1.toFixed(3)} A ${r} ${r} 0 1 0 ${x2.toFixed(3)} ${y2.toFixed(3)} Z`;
+
+    return (
+        <svg width="24" height="24" viewBox="0 0 24 24">
+            <path
+                d={d}
+                fill="white"
+                style={{ transition: 'd 0.1s ease-in-out' }}
+            />
+        </svg>
+    );
+};
     const cursorColor = theme === 'dark' ? 'rgba(255, 255, 255, 0.9)' : 'rgba(0, 0, 0, 0.9)';
     const cursorBorderColor = theme === 'dark' ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0, 0, 0, 0.3)';
 
     return (
         <>
             {/* Paint dots canvas */}
-            <div className="fixed inset-0 pointer-events-none z-[9990] mix-blend-difference">
+            <div className="fixed inset-0 pointer-events-none z-9990 mix-blend-difference">
                 <AnimatePresence>
                     {paintDots.map((dot) => (
                         <motion.div
@@ -552,7 +588,7 @@ export function CustomCursor({ theme }: CustomCursorProps) {
             {/* Main Cursor Dot & Hand Morph */}
             <motion.div
                 ref={cursorRef}
-                className="fixed pointer-events-none z-[9999] mix-blend-difference cursor-element flex items-center justify-center overflow-visible"
+                className="fixed pointer-events-none z-9999 mix-blend-difference cursor-element flex items-center justify-center overflow-visible"
                 style={{
                     x: cursorX,
                     y: cursorY,
@@ -588,7 +624,7 @@ export function CustomCursor({ theme }: CustomCursorProps) {
 
             {/* Cursor Ring */}
             <motion.div
-                className="fixed pointer-events-none z-[9998] cursor-element"
+                className="fixed pointer-events-none z-9998 cursor-element"
                 style={{
                     x: cursorXSpring,
                     y: cursorYSpring,
@@ -618,7 +654,7 @@ export function CustomCursor({ theme }: CustomCursorProps) {
             <AnimatePresence>
                 {hoverText && (
                     <motion.div
-                        className="fixed pointer-events-none z-[9999] cursor-element"
+                        className="fixed pointer-events-none z-9999 cursor-element"
                         style={{ x: cursorXSpring, y: cursorYSpring }}
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
