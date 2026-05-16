@@ -13,10 +13,16 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { CustomCursor } from './components/ui/CustomCursor';
 import { useLenis } from './hooks/useLenis';
 import type { Project } from './components/sections/Work';
-//  projcts.json
+import projectsData from './data/projects.json';
 import { fetchPortfolioGitHubStats } from './lib/github';
 
 
+function getStaticProjectStars() {
+   return ((projectsData.projects as { stars?: number }[]) ?? []).reduce(
+      (total, project) => total + (project.stars || 0),
+      0
+   );
+}
 
 // Lazy load section and modals
 const Experience = lazy(() => import('./components/sections/Experience').then(m => ({ default: m.Experience })));
@@ -43,11 +49,12 @@ export default function Home() {
    const [isLoading, setIsLoading] = useState(true);
    const [isTransitioning] = useState(false);
    const [clickPos] = useState({ x: 0, y: 0 });
+   const GITHUB_USERNAME = 'abhaymauryadev';
 
   //  Initialize lenis smooth scrolling
   useLenis()
 
-  const resumeUrl = ""
+  const resumeUrl = "https://drive.google.com/file/d/19B5Jx7tMJgM_m9IbAFo8lXi6e_9pvNqu/view?usp=sharing"
 
   useEffect(()=>{
     document.documentElement.setAttribute('data-theme', theme);  
@@ -108,7 +115,9 @@ export default function Home() {
             };
 
             // 1. Use the same API as react-github-calendar for accurate contribution data (last year only)
-            const contributionsData = await fetchJson('https://github-contributions-api.jogruber.de/v4/vasu-devs?y=last');
+            const contributionsData = await fetchJson(
+              `https://github-contributions-api.jogruber.de/v4/${GITHUB_USERNAME}?y=last`
+            );
             if (contributionsData && contributionsData.total) {
                // Get last year's contributions (matches the heatmap)
                if (contributionsData.total.lastYear !== undefined) {
@@ -132,17 +141,21 @@ export default function Home() {
                }
             } catch (e) {
                console.warn('Failed to fetch live GitHub stars:', e);
-               const cachedStarsData = await fetchJson('https://api.github-star-counter.workers.dev/user/vasu-devs');
+               const cachedStarsData = await fetchJson(
+                  `https://api.github-star-counter.workers.dev/user/${GITHUB_USERNAME}`
+               );
                const fallbackStars =
                   cachedStarsData && typeof cachedStarsData.stars === 'number' && cachedStarsData.stars > 0
                      ? cachedStarsData.stars
-                     // : getStaticProjectStars();
-                        :0;
+                     : getStaticProjectStars();
+                        // :0;
                setStats(prev => ({ ...prev, stars: Math.max(prev.stars, fallbackStars) }));
             }
 
             // 3. Fetch PR Count from GitHub API
-            const prsData = await fetchJson('https://api.github.com/search/issues?q=type:pr+author:vasu-devs');
+            const prsData = await fetchJson(
+                `https://api.github.com/search/issues?q=type:pr+author:${GITHUB_USERNAME}`
+            );
             if (prsData && typeof prsData.total_count === 'number') {
                setStats(prev => ({ ...prev, prs: prsData.total_count }));
             }
