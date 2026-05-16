@@ -547,7 +547,7 @@ export default function Home() {
                         <FaXTwitter className="w-4 h-4 md:w-5 md:h-5" />
                      </a>
                   </div>
-                  <a href="#experience" className="hidden lg:block text-sm md:text-base font-mono uppercase tracking-widest opacity-80 hover:opacity-100 transition-opacity">Experience</a>
+                  {/* <a href="#experience" className="hidden lg:block text-sm md:text-base font-mono uppercase tracking-widest opacity-80 hover:opacity-100 transition-opacity">Experience</a> */}
                   <a href="#skills" className="hidden lg:block text-sm md:text-base font-mono uppercase tracking-widest opacity-80 hover:opacity-100 transition-opacity">Skills</a>
                   <a href="#services" className="hidden lg:block text-sm md:text-base font-mono uppercase tracking-widest opacity-80 hover:opacity-100 transition-opacity">Services</a>
                   <a href="#contact" className="hidden lg:block text-sm md:text-base font-mono uppercase tracking-widest opacity-80 hover:opacity-100 transition-opacity">Contact</a>
@@ -572,7 +572,7 @@ export default function Home() {
          {/* All scrollable content - overlaps the fixed Hero */}
          <div className="relative z-20 bg-bg-primary">
             <Suspense fallback={<div className="h-96" />}>
-               <Experience />
+               {/* <Experience /> */}
                <Work projects={projects} openModal={openModal} />
                <MoreProjects />
                <Skills />

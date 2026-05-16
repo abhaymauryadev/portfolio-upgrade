@@ -202,7 +202,7 @@ export const ProjectModal = ({ isOpen, onClose, project }: ProjectModalProps) =>
                                             </a>
                                         )}
                                         <a
-                                            href="mailto:siddhvasudev1402@gmail.com"
+                                            href="mailto:theabhaymauryadev@gmail.com"
                                             className="inline-flex items-center gap-[2vw] md:gap-2 px-[5vw] md:px-5 py-[3vw] md:py-2.5 rounded-full border border-border-primary font-mono text-[2.8vw] md:text-xs uppercase tracking-widest font-bold hover:bg-bg-secondary transition-colors"
                                         >
                                             <Mail className="w-[4vw] h-[4vw] md:w-4 md:h-4" />

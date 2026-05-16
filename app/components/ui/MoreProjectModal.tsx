@@ -70,7 +70,7 @@ export const MoreProjectModal = ({ project, onClose }: MoreProjectModalProps) =>
     return createPortal(
         <AnimatePresence>
             {project && (
-                <div className="fixed inset-0 z-[100] flex items-center justify-center p-[3vw] md:p-[2vw]">
+                <div className="fixed inset-0 z-100 flex items-center justify-center p-[3vw] md:p-[2vw]">
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
@@ -84,7 +84,7 @@ export const MoreProjectModal = ({ project, onClose }: MoreProjectModalProps) =>
                         animate={{ scale: 1, opacity: 1, y: 0 }}
                         exit={{ scale: 0.97, opacity: 0, y: 20 }}
                         transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                        className="relative w-full max-w-[900px] bg-bg-primary border border-border-primary rounded-2xl shadow-2xl flex flex-col max-h-[92vh] overflow-hidden"
+                        className="relative w-full max-w-225 bg-bg-primary border border-border-primary rounded-2xl shadow-2xl flex flex-col max-h-[92vh] overflow-hidden"
                     >
                         {/* Sticky header */}
                         <div className="flex justify-between items-start gap-4 px-[6vw] md:px-8 py-[4vw] md:py-5 border-b border-border-primary bg-bg-primary/80 backdrop-blur-md z-10">
@@ -203,7 +203,7 @@ export const MoreProjectModal = ({ project, onClose }: MoreProjectModalProps) =>
                                 {/* Action buttons */}
                                 <div className="flex flex-wrap gap-[3vw] md:gap-3 pt-[4vw] md:pt-6 border-t border-border-primary/60">
                                     <a
-                                        href="mailto:siddhvasudev1402@gmail.com"
+                                        href="mailto:theabhaymauryadev@gmail.com"
                                         className="inline-flex items-center gap-[2vw] md:gap-2 px-[5vw] md:px-6 py-[3vw] md:py-3 rounded-full bg-fg-primary text-bg-primary font-mono text-[2.8vw] md:text-sm uppercase tracking-widest font-bold hover:scale-105 transition-transform"
                                     >
                                         <Mail className="w-[4vw] h-[4vw] md:w-4 md:h-4" />

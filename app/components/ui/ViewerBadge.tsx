@@ -270,7 +270,7 @@ export const ViewerBadge = ({ theme = 'dark' }: ViewerBadgeProps) => {
                                                 <span className={`text-[2.25vw] md:text-[0.7vw] uppercase tracking-wider font-bold opacity-40 ${isOverLightBg ? 'text-black' : 'text-white'}`}>
                                                     {stat.name}
                                                 </span>
-                                                <span className={`text-[2.5vw] md:text-[0.9vw]  flex justify-start items-end border font-black ${stat.color || ''} ${isOverLightBg ? 'text-black' : 'text-white'}`}>
+                                                <span className={`text-[2.5vw] md:text-[0.9vw] flex justify-start items-center gap-2  font-black ${stat.color || ''} ${isOverLightBg ? 'text-black' : 'text-white'}`}>
                                                     {stat.value}
                                                 </span>
                                             </div>
