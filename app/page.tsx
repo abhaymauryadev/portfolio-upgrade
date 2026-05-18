@@ -148,7 +148,7 @@ export default function Home() {
                   cachedStarsData && typeof cachedStarsData.stars === 'number' && cachedStarsData.stars > 0
                      ? cachedStarsData.stars
                      : getStaticProjectStars();
-                        // :0;
+                     
                setStats(prev => ({ ...prev, stars: Math.max(prev.stars, fallbackStars) }));
             }
 
