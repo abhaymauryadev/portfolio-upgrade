@@ -13,13 +13,13 @@ import { writeFile, mkdir } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const USER = 'vasu-devs';
+const USER = 'abhaymauryadev';
 const PER_PAGE = 100;
 
 // Keep these in sync with the `projects` array in src/App.tsx.
 // Compared case-insensitively against GitHub repo names.
 const FEATURED = new Set(
-    ['BranchGPT', 'Vaani', 'Odeon', 'MapMyRepo', 'PolySEE'].map((n) => n.toLowerCase())
+    ['AI-Powered Note Manager', 'Smart-Service Market place', 'DevTrack'].map((n) => n.toLowerCase())
 );
 
 const token = process.env.GITHUB_TOKEN;

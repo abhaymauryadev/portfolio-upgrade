@@ -17,11 +17,9 @@ const CACHE_DIR = resolve(__dirname, '..', '.cache', 'featured-readmes');
 
 // Keep in sync with the projects array in src/App.tsx.
 const FEATURED = [
-    { user: 'vasu-devs', name: 'BranchGPT' },
-    { user: 'vasu-devs', name: 'Vaani' },
-    { user: 'vasu-devs', name: 'Odeon' },
-    { user: 'vasu-devs', name: 'MapMyRepo' },
-    { user: 'vasu-devs', name: 'PolySEE' },
+    { user: 'abhaymauryadev', name: 'AI-Powered Note Manager' },
+    { user: 'abhaymauryadev', name: 'Smart-Service Market place' },
+    { user: 'abhaymauryadev', name: 'DevTrack' },
 ];
 
 const token = process.env.GITHUB_TOKEN;

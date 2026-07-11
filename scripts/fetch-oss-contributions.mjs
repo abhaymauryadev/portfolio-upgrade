@@ -13,7 +13,7 @@ import { writeFile, mkdir } from 'node:fs/promises';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const USER = 'vasu-devs';
+const USER = 'abhaymauryadev';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const OUT_PATH = resolve(__dirname, '..', 'src', 'data', 'oss-contributions.json');
 
