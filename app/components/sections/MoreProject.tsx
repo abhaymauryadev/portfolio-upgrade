@@ -256,7 +256,7 @@ export const MoreProjects = () => {
                     <span className="text-fg-primary/30">
                         03 /
                     </span>{' '}
-                    Projects
+                    More from Github
                 </motion.h2>
 
                 {/* Intro */}
@@ -273,10 +273,7 @@ export const MoreProjects = () => {
                     transition={{ delay: 0.1 }}
                     className="text-[4vw] md:text-xl text-fg-secondary leading-relaxed mb-[6vw] md:mb-10 max-w-2xl"
                 >
-                    A collection of full-stack
-                    applications, AI projects, and
-                    development experiments built using
-                    modern web technologies.
+                    A selection of my other public work. Click any tile for the full case study  summary, notable details, and tech stack pulled from the README.
                 </motion.p>
 
                 {/* Filter Buttons */}
@@ -301,10 +298,10 @@ export const MoreProjects = () => {
                             lang === 'All'
                                 ? projects.length
                                 : projects.filter(
-                                      (p) =>
-                                          p.language ===
-                                          lang
-                                  ).length;
+                                    (p) =>
+                                        p.language ===
+                                        lang
+                                ).length;
 
                         return (
                             <button
@@ -314,11 +311,10 @@ export const MoreProjects = () => {
                                     setLangFilter(lang);
                                     setShowAll(false);
                                 }}
-                                className={`inline-flex items-center gap-[1.5vw] md:gap-2 px-[3vw] md:px-4 py-[1.5vw] md:py-1.5 rounded-full text-[2.8vw] md:text-xs font-mono uppercase tracking-widest transition-colors ${
-                                    isActive
+                                className={`inline-flex items-center gap-[1.5vw] md:gap-2 px-[3vw] md:px-4 py-[1.5vw] md:py-1.5 rounded-full text-[2.8vw] md:text-xs font-mono uppercase tracking-widest transition-colors ${isActive
                                         ? 'bg-fg-primary text-bg-primary border border-fg-primary'
                                         : 'border border-border-primary text-fg-secondary hover:bg-bg-secondary'
-                                }`}
+                                    }`}
                             >
                                 {lang !== 'All' &&
                                     lang in LANG_COLOR && (
@@ -327,7 +323,7 @@ export const MoreProjects = () => {
                                             style={{
                                                 background:
                                                     LANG_COLOR[
-                                                        lang
+                                                    lang
                                                     ],
                                             }}
                                         />
@@ -381,7 +377,7 @@ export const MoreProjects = () => {
                                         0.3
                                     ),
                                 }}
-                                className="group relative flex flex-col text-left border border-border-primary rounded-2xl p-[5vw] md:p-6 bg-fg-primary/[0.03] hover:bg-fg-primary/[0.06] transition-colors cursor-pointer"
+                                className="group relative flex flex-col text-left border border-border-primary rounded-2xl p-[5vw] md:p-6 bg-fg-primary/3 hover:bg-fg-primary/6 transition-colors cursor-pointer"
                             >
 
                                 {/* Top */}
@@ -444,8 +440,8 @@ export const MoreProjects = () => {
                                                 style={{
                                                     background:
                                                         LANG_COLOR[
-                                                            p
-                                                                .language
+                                                        p
+                                                            .language
                                                         ] ??
                                                         '#71717a',
                                                 }}
@@ -491,33 +487,33 @@ export const MoreProjects = () => {
                 {(hiddenCount > 0 ||
                     (langFilter === 'All' &&
                         showAll)) && (
-                    <div className="flex justify-center mt-[8vw] md:mt-12">
+                        <div className="flex justify-center mt-[8vw] md:mt-12">
 
-                        <button
-                            type="button"
-                            onClick={() =>
-                                setShowAll((v) => !v)
-                            }
-                            className="inline-flex items-center gap-[2vw] md:gap-2 px-[5vw] md:px-6 py-[3vw] md:py-3 rounded-full border border-border-primary font-mono text-[2.8vw] md:text-sm uppercase tracking-widest font-bold hover:bg-bg-secondary transition-colors"
-                        >
-                            {showAll ? (
-                                <>
-                                    Show Less
+                            <button
+                                type="button"
+                                onClick={() =>
+                                    setShowAll((v) => !v)
+                                }
+                                className="inline-flex items-center gap-[2vw] md:gap-2 px-[5vw] md:px-6 py-[3vw] md:py-3 rounded-full border border-border-primary font-mono text-[2.8vw] md:text-sm uppercase tracking-widest font-bold hover:bg-bg-secondary transition-colors"
+                            >
+                                {showAll ? (
+                                    <>
+                                        Show Less
 
-                                    <ChevronDown className="w-[4vw] h-[4vw] md:w-4 md:h-4 rotate-180" />
-                                </>
-                            ) : (
-                                <>
-                                    Show All{' '}
-                                    {filtered.length}{' '}
-                                    Projects
+                                        <ChevronDown className="w-[4vw] h-[4vw] md:w-4 md:h-4 rotate-180" />
+                                    </>
+                                ) : (
+                                    <>
+                                        Show All{' '}
+                                        {filtered.length}{' '}
+                                        Projects
 
-                                    <ChevronDown className="w-[4vw] h-[4vw] md:w-4 md:h-4" />
-                                </>
-                            )}
-                        </button>
-                    </div>
-                )}
+                                        <ChevronDown className="w-[4vw] h-[4vw] md:w-4 md:h-4" />
+                                    </>
+                                )}
+                            </button>
+                        </div>
+                    )}
             </Container>
 
             {/* Modal */}

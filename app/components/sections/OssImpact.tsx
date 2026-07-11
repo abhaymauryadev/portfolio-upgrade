@@ -27,33 +27,33 @@ interface OssImpactProps {
 // Top tier: shown as big cards.
 // Secondary: shown as compact one-line rows.
 const FEATURED = [
-    {
-        repo: 'lingdojo/kana-dojo',
-        url: 'https://github.com/lingdojo/kana-dojo',
-        label: '4 PRs merged · Design System',
-        title: 'kana-dojo',
-        icon: Palette,
-        description:
-            "Authored four themes — Wabi, Wasabi Garden, Mirage Solis and Moonlit Waterfall — plus design documentation. Recurring contributor across the theme system.",
-    },
-    {
-        repo: 'EbookFoundation/free-programming-books',
-        url: 'https://github.com/EbookFoundation/free-programming-books',
-        label: '275k★ · Developer Resources',
-        title: 'free-programming-books',
-        icon: BookOpen,
-        description:
-            "Added FastAPI to the programming cheatsheets index in EbookFoundation's famously selective developer-resource collection.",
-    },
-    {
-        repo: 'pqoqubbw/icons',
-        url: 'https://github.com/pqoqubbw/icons',
-        label: 'Animated Icon Library',
-        title: 'pqoqubbw/icons',
-        icon: Wand2,
-        description:
-            "Contributed an animated corner-down-left icon with a path-draw animation to one of the most popular open-source animated-icon libraries.",
-    },
+    // {
+    //     repo: 'lingdojo/kana-dojo',
+    //     url: 'https://github.com/lingdojo/kana-dojo',
+    //     label: '4 PRs merged · Design System',
+    //     title: 'kana-dojo',
+    //     icon: Palette,
+    //     description:
+    //         "Authored four themes — Wabi, Wasabi Garden, Mirage Solis and Moonlit Waterfall — plus design documentation. Recurring contributor across the theme system.",
+    // },
+    // {
+    //     repo: 'EbookFoundation/free-programming-books',
+    //     url: 'https://github.com/EbookFoundation/free-programming-books',
+    //     label: '275k★ · Developer Resources',
+    //     title: 'free-programming-books',
+    //     icon: BookOpen,
+    //     description:
+    //         "Added FastAPI to the programming cheatsheets index in EbookFoundation's famously selective developer-resource collection.",
+    // },
+    // {
+    //     repo: 'pqoqubbw/icons',
+    //     url: 'https://github.com/pqoqubbw/icons',
+    //     label: 'Animated Icon Library',
+    //     title: 'pqoqubbw/icons',
+    //     icon: Wand2,
+    //     description:
+    //         "Contributed an animated corner-down-left icon with a path-draw animation to one of the most popular open-source animated-icon libraries.",
+    // },
 ];
 
 const SECONDARY: any[] = [];
@@ -155,7 +155,7 @@ export const OssImpact = ({ stats, isLoading = false }: OssImpactProps) => {
 
                 {/* Top tier: 3 headline contributions */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-[4vw] md:gap-5 mb-[6vw] md:mb-8">
-                    {FEATURED.map((c, i) => (
+                    {/* {FEATURED.map((c, i) => (
                         <motion.a
                             key={c.repo}
                             href={c.url}
@@ -186,7 +186,7 @@ export const OssImpact = ({ stats, isLoading = false }: OssImpactProps) => {
                                 {c.description}
                             </p>
                         </motion.a>
-                    ))}
+                    ))} */}
                 </div>
 
                 {/* Secondary tier: compact rows */}

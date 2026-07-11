@@ -71,7 +71,7 @@ export const ProjectModal = ({ isOpen, onClose, project }: ProjectModalProps) =>
                         animate={{ scale: 1, opacity: 1, y: 0 }}
                         exit={{ scale: 0.97, opacity: 0, y: 20 }}
                         transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                        className="relative w-full max-w-[1320px] bg-bg-primary border border-border-primary rounded-2xl shadow-2xl flex flex-col max-h-[92vh] md:h-[88vh] overflow-hidden"
+                        className="relative w-full max-w-330 bg-bg-primary border border-border-primary rounded-2xl shadow-2xl flex flex-col max-h-[92vh] md:h-[88vh] overflow-hidden"
                     >
                         {/* Header */}
                         <div className="flex justify-between items-start gap-4 px-[6vw] md:px-8 py-[4vw] md:py-5 border-b border-border-primary bg-bg-primary/80 backdrop-blur-md shrink-0">
