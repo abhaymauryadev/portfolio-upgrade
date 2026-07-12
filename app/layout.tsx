@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const SITE_URL = "https://abhaymaurya.vercel.app";
@@ -137,6 +138,12 @@ export const metadata: Metadata = {
     statusBarStyle: "default",
     title: "Abhay Maurya",
   },
+
+  // 🔽 Replace with the code Search Console gives you under the "HTML tag" method
+  // e.g. <meta name="google-site-verification" content="THIS_PART_ONLY" />
+  verification: {
+    google: "googlebb8dcfd303bf62ea.html",
+  },
 };
 
 const jsonLd = {
@@ -168,6 +175,9 @@ const jsonLd = {
   },
 };
 
+// 🔽 Replace with your actual GA4 Measurement ID from GA4 → Admin → Data Streams
+const GA_MEASUREMENT_ID = "G-XXXXXXXXXX";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -183,6 +193,20 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+
+        {/* Google Analytics (gtag.js) */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_MEASUREMENT_ID}');
+          `}
+        </Script>
       </head>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
