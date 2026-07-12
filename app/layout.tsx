@@ -142,10 +142,9 @@ export const metadata: Metadata = {
   // 🔽 Replace with the code Search Console gives you under the "HTML tag" method
   // e.g. <meta name="google-site-verification" content="THIS_PART_ONLY" />
   verification: {
-    google: "googlebb8dcfd303bf62ea.html",
+    google: "h6MzCoJdtdwQYfqGkqnK5K0Uvoqz-QGLcuLppfHgLfk",
   },
 };
-
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
