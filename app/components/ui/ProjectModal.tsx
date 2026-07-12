@@ -57,7 +57,7 @@ export const ProjectModal = ({ isOpen, onClose, project }: ProjectModalProps) =>
     return (
         <AnimatePresence>
             {isOpen && (
-                <div className="fixed inset-0 z-[100] flex items-center justify-center p-[3vw] md:p-[2vw]">
+                <div className="fixed inset-0 z-100 flex items-center justify-center p-[3vw] md:p-[2vw]">
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
