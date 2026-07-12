@@ -20,12 +20,12 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
 
   title: {
-    default: "Abhay Maurya | Full Stack Next.js Developer in India",
+    default: "Abhay Maurya | Full Stack Developer",
     template: "%s | Abhay Maurya",
   },
 
   description:
-    "Abhay Maurya is a Full Stack MERN & Next.js Developer building fast, scalable, and SEO-optimized web applications with modern UI/UX.",
+    "Abhay Maurya is a Full Stack MERN Developer & AI Engnieer building fast, scalable, and SEO-optimized web applications with modern UI/UX.",
 
   applicationName: "Abhay Maurya Portfolio",
 
@@ -89,9 +89,9 @@ export const metadata: Metadata = {
   },
 
   openGraph: {
-    title: "Abhay Maurya | Full Stack Next.js Developer",
+    title: "Abhay Maurya | Full Stack Developer & AI Engineer",
     description:
-      "Hire a Full Stack MERN & Next.js Developer for high-performance, SEO-friendly, and scalable web applications.",
+      "Hire a Full Stack Developer & AI Engineerfor high-performance, SEO-friendly, and scalable web applications.",
     url: SITE_URL,
     siteName: "Abhay Maurya Portfolio",
     images: [
@@ -99,7 +99,7 @@ export const metadata: Metadata = {
         url: "/hero.png",
         width: 1200,
         height: 630,
-        alt: "Abhay Maurya – Full Stack Next.js Developer",
+        alt: "Abhay Maurya – Full Stack0 Developer & AI Engineer",
         type: "image/png",
       },
     ],

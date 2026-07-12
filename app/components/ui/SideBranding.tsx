@@ -8,7 +8,7 @@ export const SideBranding = () => {
             transition={{ duration: 1, delay: 2 }}
             className="absolute right-3 md:right-6 inset-y-0 z-[40] hidden xl:block pointer-events-none select-none mix-blend-difference"
         >
-            {/* VASU-DEVS — entirely in upper half, anchored just above the 44% split */}
+            {/* ABHAY MAURYA — entirely in upper half, anchored just above the 44% split */}
             <div
                 className="absolute right-0 font-mono text-[10px] uppercase tracking-[0.8em] whitespace-nowrap text-white"
                 style={{

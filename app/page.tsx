@@ -25,7 +25,7 @@ function getStaticProjectStars() {
 }
 
 // Lazy load section and modals
-const Experience = lazy(() => import('./components/sections/Experience').then(m => ({ default: m.Experience })));
+// const Experience = lazy(() => import('./components/sections/Experience').then(m => ({ default: m.Experience })));
 const Work = lazy(() => import('./components/sections/Work').then(m => ({ default: m.Work })));
 const MoreProjects = lazy(() => import('./components/sections/MoreProject').then(m => ({ default: m.MoreProjects })));
 const Skills = lazy(() => import('./components/sections/Skills').then(m => ({ default: m.Skills })));
