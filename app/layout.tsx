@@ -139,8 +139,7 @@ export const metadata: Metadata = {
     title: "Abhay Maurya",
   },
 
-  // 🔽 Replace with the code Search Console gives you under the "HTML tag" method
-  // e.g. <meta name="google-site-verification" content="THIS_PART_ONLY" />
+ 
   verification: {
     google: "h6MzCoJdtdwQYfqGkqnK5K0Uvoqz-QGLcuLppfHgLfk",
   },
@@ -151,13 +150,13 @@ const jsonLd = {
   name: "Abhay Maurya",
   url: SITE_URL,
   image: `${SITE_URL}/hero.png`,
-  jobTitle: "Full Stack Developer",
+  jobTitle: "Full Stack Developer & AI Engineer",
   description:
-    "Full Stack MERN & Next.js Developer building fast, scalable, and SEO-optimized web applications.",
+    "Full Stack MERN & Next.js Developer and AI Engineer building fast, scalable, and SEO-optimized web applications.",
   sameAs: [
-    "https://github.com/Abhaymaurya-developer",
-    "https://twitter.com/theabhaywebdev",
-    "https://linkedin.com/in/abhaymaurya",
+    "https://github.com/abhaymauryadev",
+    "https://x.com/theabhaywebdev",
+    "https://www.linkedin.com/in/abhaymauryadev",
   ],
   knowsAbout: [
     "Next.js",
@@ -166,6 +165,10 @@ const jsonLd = {
     "MongoDB",
     "TypeScript",
     "Full Stack Development",
+    "AI Engineer",
+    "GSAP",
+    "React Developer",
+    "MERN Stack Developer"
   ],
   address: {
     "@type": "PostalAddress",
@@ -173,9 +176,6 @@ const jsonLd = {
     addressCountry: "IN",
   },
 };
-
-// 🔽 Replace with your actual GA4 Measurement ID from GA4 → Admin → Data Streams
-const GA_MEASUREMENT_ID = "G-XXXXXXXXXX";
 
 export default function RootLayout({
   children,
@@ -195,7 +195,7 @@ export default function RootLayout({
 
         {/* Google Analytics (gtag.js) */}
         <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+          src="https://www.googletagmanager.com/gtag/js?id=G-7MYBZSJBPN"
           strategy="afterInteractive"
         />
         <Script id="google-analytics" strategy="afterInteractive">
