@@ -1,5 +1,5 @@
 "use client"
-import { useState, useEffect, lazy, Suspense } from 'react';
+import { useState, useEffect, useCallback, lazy, Suspense } from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { Mail } from 'lucide-react';
@@ -25,7 +25,6 @@ function getStaticProjectStars() {
 }
 
 // Lazy load section and modals
-// const Experience = lazy(() => import('./components/sections/Experience').then(m => ({ default: m.Experience })));
 const Work = lazy(() => import('./components/sections/Work').then(m => ({ default: m.Work })));
 const MoreProjects = lazy(() => import('./components/sections/MoreProject').then(m => ({ default: m.MoreProjects })));
 const Skills = lazy(() => import('./components/sections/Skills').then(m => ({ default: m.Skills })));
@@ -180,6 +179,8 @@ export default function Home() {
          window.removeEventListener('focus', fetchStats);
       };
    }, []);
+
+   const finishLoading = useCallback(() => setIsLoading(false), []);
 
    const openModal = (project: Project) => {
       setSelectedProject(project);
@@ -433,7 +434,7 @@ export default function Home() {
          <CustomCursor theme={theme} />
          <AnimatePresence mode="wait">
             {isLoading && (
-               <Preloader key="preloader" theme={theme} finishLoading={() => setIsLoading(false)} />
+               <Preloader key="preloader" theme={theme} finishLoading={finishLoading} />
             )}
          </AnimatePresence>
 
@@ -512,7 +513,7 @@ export default function Home() {
                </span>
                <div className="flex items-center gap-4 md:gap-6">
                   <div className="flex lg:hidden items-center gap-4 pr-4 border-r border-current/10">
-                     <a href="mailto:siddhvasudev1402@gmail.com" className="opacity-70 hover:opacity-100 transition-opacity">
+                     <a href="mailto:theabhaymauryadev@gmail.com" className="opacity-70 hover:opacity-100 transition-opacity">
                         <Mail className="w-4 h-4 md:w-5 md:h-5" />
                      </a>
                      <a href="https://www.linkedin.com/in/abhaymauryadev/" target="_blank" rel="noopener noreferrer" className="opacity-70 hover:opacity-100 transition-opacity">
@@ -522,7 +523,6 @@ export default function Home() {
                         <FaXTwitter className="w-4 h-4 md:w-5 md:h-5" />
                      </a>
                   </div>
-                  {/* <a href="#experience" className="hidden lg:block text-sm md:text-base font-mono uppercase tracking-widest opacity-80 hover:opacity-100 transition-opacity">Experience</a> */}
                   <a href="#skills" className="hidden lg:block text-sm md:text-base font-mono uppercase tracking-widest opacity-80 hover:opacity-100 transition-opacity">Skills</a>
                   <a href="#services" className="hidden lg:block text-sm md:text-base font-mono uppercase tracking-widest opacity-80 hover:opacity-100 transition-opacity">Services</a>
                   <a href="#contact" className="hidden lg:block text-sm md:text-base font-mono uppercase tracking-widest opacity-80 hover:opacity-100 transition-opacity">Contact</a>

@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef, useCallback } from 'react';
 import { motion, useSpring, useMotionValue, AnimatePresence } from 'framer-motion';
-import { Bot, Pointer } from 'lucide-react';
+import { Pointer } from 'lucide-react';
 import { TbPacman } from "react-icons/tb";
 
 interface CustomCursorProps {
@@ -15,7 +15,7 @@ interface PaintDot {
     size: number;
 }
 
-
+const INTERACTIVE_SELECTOR = 'a, button, [role="button"], input, textarea, select, [data-cursor-hover]';
 
 export function CustomCursor({ theme }: CustomCursorProps) {
     const [isHovering, setIsHovering] = useState(false);
@@ -38,6 +38,8 @@ export function CustomCursor({ theme }: CustomCursorProps) {
     // Store full dot info for the eater to follow
     const currentStrokeDots = useRef<PaintDot[]>([]);
     const velocityDecayRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+    const velocityScaleRef = useRef(1);
+    const hoveredElRef = useRef<Element | null>(null);
 
     // Use motion values for smooth animation
     const cursorX = useMotionValue(0);
@@ -126,9 +128,7 @@ export function CustomCursor({ theme }: CustomCursorProps) {
         cursorX.set(e.clientX);
         cursorY.set(e.clientY);
 
-        if (!isVisible) {
-            setIsVisible(true);
-        }
+        setIsVisible((prev) => (prev ? prev : true));
 
         // Calculate velocity for shake detection
         const now = Date.now();
@@ -141,7 +141,8 @@ export function CustomCursor({ theme }: CustomCursorProps) {
 
             // Scale up when moving fast (shaking)
             const newScale = Math.min(1 + velocity * 0.5, 3); // Max 3x scale
-            if (newScale > velocityScale) {
+            if (newScale > velocityScaleRef.current) {
+                velocityScaleRef.current = newScale;
                 setVelocityScale(newScale);
 
                 // Clear existing decay timeout
@@ -151,6 +152,7 @@ export function CustomCursor({ theme }: CustomCursorProps) {
 
                 // Decay back to normal after stopping
                 velocityDecayRef.current = setTimeout(() => {
+                    velocityScaleRef.current = 1;
                     setVelocityScale(1);
                 }, 150);
             }
@@ -179,7 +181,7 @@ export function CustomCursor({ theme }: CustomCursorProps) {
                 lastPaintPos.current = { x: e.clientX, y: e.clientY };
             }
         }
-    }, [cursorX, cursorY, isVisible, velocityScale]);
+    }, [cursorX, cursorY]);
 
     const handleMouseDown = useCallback((e: MouseEvent) => {
         // Prevent text selection
@@ -212,16 +214,26 @@ export function CustomCursor({ theme }: CustomCursorProps) {
         fadeOutCurrentStroke();
     }, [fadeOutCurrentStroke]);
 
-    const handleMouseEnterInteractive = useCallback((e: Event) => {
-        setIsHovering(true);
+    // Delegated hover detection: a single pair of window listeners handles
+    // every interactive element (including ones added later), so we never
+    // need to re-scan the DOM or track a MutationObserver.
+    const handlePointerOver = useCallback((e: MouseEvent) => {
         const target = e.target as HTMLElement;
-        const cursorText = target.getAttribute('data-cursor-text');
-        if (cursorText) {
-            setHoverText(cursorText);
-        }
+        const interactive = target.closest(INTERACTIVE_SELECTOR);
+        if (!interactive || interactive === hoveredElRef.current) return;
+
+        hoveredElRef.current = interactive;
+        setIsHovering(true);
+        setHoverText(interactive.getAttribute('data-cursor-text'));
     }, []);
 
-    const handleMouseLeaveInteractive = useCallback(() => {
+    const handlePointerOut = useCallback((e: MouseEvent) => {
+        if (!hoveredElRef.current) return;
+
+        const related = e.relatedTarget as Node | null;
+        if (related && hoveredElRef.current.contains(related)) return;
+
+        hoveredElRef.current = null;
         setIsHovering(false);
         setHoverText(null);
     }, []);
@@ -255,18 +267,10 @@ export function CustomCursor({ theme }: CustomCursorProps) {
         window.addEventListener('mousedown', handleMouseDown);
         window.addEventListener('mouseup', handleMouseUp);
         window.addEventListener('dragstart', handleDragStart);
+        window.addEventListener('mouseover', handlePointerOver);
+        window.addEventListener('mouseout', handlePointerOut);
         document.documentElement.addEventListener('mouseleave', handleMouseLeave);
         document.documentElement.addEventListener('mouseenter', handleMouseEnter);
-
-        // Find all interactive elements
-        const interactiveElements = document.querySelectorAll(
-            'a, button, [role="button"], input, textarea, select, [data-cursor-hover]'
-        );
-
-        interactiveElements.forEach((el) => {
-            el.addEventListener('mouseenter', handleMouseEnterInteractive);
-            el.addEventListener('mouseleave', handleMouseLeaveInteractive);
-        });
 
         // Hide default cursor
         document.body.style.cursor = 'none';
@@ -276,37 +280,14 @@ export function CustomCursor({ theme }: CustomCursorProps) {
             window.removeEventListener('mousedown', handleMouseDown);
             window.removeEventListener('mouseup', handleMouseUp);
             window.removeEventListener('dragstart', handleDragStart);
+            window.removeEventListener('mouseover', handlePointerOver);
+            window.removeEventListener('mouseout', handlePointerOut);
             document.documentElement.removeEventListener('mouseleave', handleMouseLeave);
             document.documentElement.removeEventListener('mouseenter', handleMouseEnter);
 
-            interactiveElements.forEach((el) => {
-                el.removeEventListener('mouseenter', handleMouseEnterInteractive);
-                el.removeEventListener('mouseleave', handleMouseLeaveInteractive);
-            });
-
             document.body.style.cursor = 'auto';
         };
-    }, [handleMouseMove, handleMouseDown, handleMouseUp, handleMouseEnterInteractive, handleMouseLeaveInteractive, handleMouseLeave, handleMouseEnter, handleDragStart]);
-
-    // Re-attach listeners when DOM changes (for dynamic content)
-    useEffect(() => {
-        const observer = new MutationObserver(() => {
-            const interactiveElements = document.querySelectorAll(
-                'a, button, [role="button"], input, textarea, select, [data-cursor-hover]'
-            );
-
-            interactiveElements.forEach((el) => {
-                el.removeEventListener('mouseenter', handleMouseEnterInteractive);
-                el.removeEventListener('mouseleave', handleMouseLeaveInteractive);
-                el.addEventListener('mouseenter', handleMouseEnterInteractive);
-                el.addEventListener('mouseleave', handleMouseLeaveInteractive);
-            });
-        });
-
-        observer.observe(document.body, { childList: true, subtree: true });
-
-        return () => observer.disconnect();
-    }, [handleMouseEnterInteractive, handleMouseLeaveInteractive]);
+    }, [handleMouseMove, handleMouseDown, handleMouseUp, handlePointerOver, handlePointerOut, handleMouseLeave, handleMouseEnter, handleDragStart]);
 
     // Detect touch device for conditional rendering
     const [isTouchDevice, setIsTouchDevice] = useState(false);
@@ -497,42 +478,6 @@ export function CustomCursor({ theme }: CustomCursorProps) {
         );
     }
 
-    //  Animated Pacman
-    const AnimatedPacman = () => {
-    const [mouthAngle, setMouthAngle] = useState(40);
-
-    useEffect(() => {
-        let open = true;
-        const interval = setInterval(() => {
-            open = !open;
-            setMouthAngle(open ? 40 : 4);
-        }, 160);
-        return () => clearInterval(interval);
-    }, []);
-
-    const r = 11;
-    const cx = 12;
-    const cy = 12;
-    const rad = (mouthAngle * Math.PI) / 180;
-
-    const x1 = cx + r * Math.cos(-rad);
-    const y1 = cy + r * Math.sin(-rad);
-    const x2 = cx + r * Math.cos(rad);
-    const y2 = cy + r * Math.sin(rad);
-
-    // Same path structure each render = CSS `d` transition works
-    const d = `M ${cx} ${cy} L ${x1.toFixed(3)} ${y1.toFixed(3)} A ${r} ${r} 0 1 0 ${x2.toFixed(3)} ${y2.toFixed(3)} Z`;
-
-    return (
-        <svg width="24" height="24" viewBox="0 0 24 24">
-            <path
-                d={d}
-                fill="white"
-                style={{ transition: 'd 0.1s ease-in-out' }}
-            />
-        </svg>
-    );
-};
     const cursorColor = theme === 'dark' ? 'rgba(255, 255, 255, 0.9)' : 'rgba(0, 0, 0, 0.9)';
     const cursorBorderColor = theme === 'dark' ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0, 0, 0, 0.3)';
 
