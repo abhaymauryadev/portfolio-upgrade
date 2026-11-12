@@ -92,7 +92,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Abhay Maurya | Full Stack Developer & AI Engineer",
     description:
-      "Hire a Full Stack Developer & AI Engineerfor high-performance, SEO-friendly, and scalable web applications.",
+      " Full Stack Developer & AI Engineerfor high-performance, SEO-friendly, and scalable web applications.",
     url: SITE_URL,
     siteName: "Abhay Maurya Portfolio",
     images: [
