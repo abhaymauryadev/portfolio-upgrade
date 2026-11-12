@@ -7,6 +7,7 @@ import { Container } from '../ui/Container';
 import { SocialButton } from '../ui/SocialButton';
 import { ResumeButton } from '../ui/ResumeButton';
 import { SideBranding } from '../ui/SideBranding';
+import { FaTwitter } from 'react-icons/fa6';
 
 interface HeroProps {
     theme?: 'light' | 'dark';
@@ -142,84 +143,27 @@ export const Hero = ({
                             </h1>
                         </div>
 
-                        {/* Intro */}
-                        <motion.div
-                            initial={{
-                                opacity: 0,
-                                y: 20,
-                            }}
-                            animate={{
-                                opacity: 1,
-                                y: 0,
-                            }}
-                            transition={{
-                                duration: 0.8,
-                                delay: 0.8,
-                            }}
-                            className="w-full mt-auto mb-2 lg:mb-28 lg:mt-12 pointer-events-auto"
-                        >
+                       {/* Description & Links */}
+                       <motion.div
+                           initial={{ opacity: 0, y: 20 }}
+                           animate={{ opacity: 1, y: 0 }}
+                           transition={{ duration: 0.8, delay: 0.8 }}
+                           className="w-full mt-auto mb-2 lg:mb-28 lg:mt-12 pointer-events-auto"
+                       >
+                           <p className="hero-intro-text max-w-2xl text-sm md:text-xl lg:text-3xl text-fg-secondary leading-relaxed font-medium mb-4 lg:mb-10">
+                               <strong className="text-fg-primary font-bold">AI Engineer</strong> from <span className="text-fg-primary">India</span> building <strong className="text-fg-primary">Voice AI Agents</strong>, <strong className="text-fg-primary">Multi-Agent Systems</strong>, <strong className="text-fg-primary">Agentic RAG</strong>, and <strong className="text-fg-primary">Intelligent Full-Stack Products</strong>.
+                           </p>
 
-                            <p className="hero-intro-text max-w-2xl text-sm md:text-xl lg:text-2xl text-fg-secondary leading-relaxed font-medium mb-4 lg:mb-10">
+                           <div className="flex flex-wrap items-center gap-3 md:gap-4 relative z-50">
+                               <SocialButton href="https://github.com/abhaymauryadev" icon={FaGithub} label="GitHub Profile" />
+                               <SocialButton href="https://x.com/theabhaywebdev" icon={FaTwitter} label="Twitter Profile" />
+                               <SocialButton href="https://www.linkedin.com/in/abhaymauryadev" icon={FaLinkedin} label="Twitter Profile" />
+                               <SocialButton href="mailto:theabhaywebdev@gmail.com" icon={Mail} label="Email Me"/>
+                               <ResumeButton onClick={onResumeClick} />
+                           </div>
+                       </motion.div>
+                   </div>
 
-                                <strong className="text-fg-primary font-bold">
-                                    MERN Stack Developer
-                                </strong>{' '}
-                                from{' '}
-                                <span className="text-fg-primary">
-                                    India
-                                </span>{' '}
-                                building{' '}
-                                <strong className="text-fg-primary">
-                                    Full-Stack Web Applications
-                                </strong>
-                                ,{' '}
-                                <strong className="text-fg-primary">
-                                    Real-Time Systems
-                                </strong>
-                                ,{' '}
-                                <strong className="text-fg-primary">
-                                    AI-Powered Projects
-                                </strong>
-                                , and modern digital experiences using{' '}
-                                <strong className="text-fg-primary">
-                                    React, Node.js, MongoDB
-                                </strong>
-                                , and scalable backend technologies.
-                            </p>
-
-                            {/* Social Buttons */}
-                            <div className="flex flex-wrap items-center gap-3 md:gap-4 relative z-50">
-
-                                <SocialButton
-                                    href="https://github.com/abhaymauryadev"
-                                    icon={FaGithub}
-                                    label="GitHub Profile"
-                                />
-
-                                <SocialButton
-                                    href="https://www.linkedin.com/in/abhaymauryadev"
-                                    icon={FaLinkedin}
-                                    label="LinkedIn Profile"
-                                />
-
-                                <SocialButton
-                                    href="mailto:theabhaywebdev@gmail.com"
-                                    icon={Mail}
-                                    label="Email Me"
-                                />
-
-                                <SocialButton
-                                    href="/resume.pdf"
-                                    icon={FileText}
-                                    label="Resume"
-                                />
-
-                                <ResumeButton
-                                    onClick={onResumeClick}
-                                />
-                            </div>
-                        </motion.div>
-                    </div>
 
                     {/* Right Image */}
                     <div className="order-1 lg:order-2 absolute lg:relative inset-0 lg:inset-auto lg:row-start-1 lg:col-start-6 lg:col-span-12 flex justify-center lg:justify-end items-center lg:items-start z-10 pointer-events-none overflow-visible">
