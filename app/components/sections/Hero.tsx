@@ -1,6 +1,6 @@
 "use client"
 import { motion } from 'framer-motion';
-import { Mail,FileText} from 'lucide-react';
+import { Mail} from 'lucide-react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
 import { Container } from '../ui/Container';
@@ -74,7 +74,7 @@ export const Hero = ({
 
                     <div className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-fg-primary/30 to-transparent" />
 
-                    <div className="absolute inset-x-0 top-0 h-1/4 bg-linear-to-b from-fg-primary/[0.05] to-transparent" />
+                    <div className="absolute inset-x-0 top-0 h-1/4 bg-linear-to-b from-fg-primary/5 to-transparent" />
 
                     <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_0%,rgba(255,255,255,0.06),transparent_70%)]" />
                 </div>
