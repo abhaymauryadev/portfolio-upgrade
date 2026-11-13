@@ -16,7 +16,7 @@
   --bg-primary: #050505;
   --bg-secondary: #0A0A0A;
   --fg-primary: #ffffff;
-  --fg-secondary: #b4b4bd;
+  --fg-secondary: #a1a1aa;
   --border-primary: #27272a;
   --accent-glow: rgba(255, 255, 255, 0.15);
   /* White glow for dark mode */
@@ -31,7 +31,7 @@
   --bg-primary: #050505;
   --bg-secondary: #0A0A0A;
   --fg-primary: #ffffff;
-  --fg-secondary: #b4b4bd;
+  --fg-secondary: #a1a1aa;
   --border-primary: #27272a;
   --accent-glow: rgba(255, 255, 255, 0.15);
   --grid-color: rgba(255, 255, 255, 0.04);
@@ -82,8 +82,9 @@ html.lenis body {
   --color-fg-primary: var(--fg-primary);
   --color-fg-secondary: var(--fg-secondary);
   --color-border-primary: var(--border-primary);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-outfit);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-jetbrains-mono);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -97,7 +98,7 @@ html.lenis body {
 body {
   background-color: var(--bg-primary);
   color: var(--fg-primary);
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-inter), sans-serif;
   transition: background-color 0.4s ease-out, color 0.4s ease-out;
   overflow-x: hidden;
 }
@@ -178,7 +179,7 @@ body {
 }
 
 .font-mono {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-jetbrains-mono), monospace;
 }
 
 .text-outline {
@@ -225,7 +226,7 @@ body {
 /* Hero intro text - black text-stroke on mobile only */
 @media (max-width: 768px) {
   .hero-intro-text {
-    color: #b4b4bd;
+    color: #a1a1aa;
     /* Force dark mode secondary color */
     text-shadow:
       -1px -1px 0 #000,
